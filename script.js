@@ -4,13 +4,6 @@ let operator="0";
 let tado=0;
 let redo=0;
 
-// const nombre = 'Victor'
-// const apellidoPaterno = 'Servin'
-// const apellidoMaterno = 'Carrillo'
-// const edad = 26;
-// // 'Hola Victor Servin Carrillo, tienes 26 años!'
-// const saludo = 'Hola ' + nombre + ' ' + apellidoPaterno + ' ' + apellidoMaterno + ', tienes ' + edad.toString() + ' años!';
-// const saludo = `Hola ${nombre} ${apellidoPaterno} ${apellidoMaterno}, tienes ${edad} años!`;
 
 function printValueToDisplay() {
     if (cuenta.startsWith("0.")) {
@@ -22,9 +15,7 @@ function printValueToDisplay() {
 
 function addNumber(number) {
     if(redo === 0){
-        // cuenta = `${ cuenta }${ number }`;
-        // cuenta = cuenta + number; // 1 + 1 = 2, '1' + '1' = '11'
-        cuenta += `${number}`; // cuenta = cuenta + `${number}` // 5 += 2 => 7
+        cuenta += `${number}`;
         printValueToDisplay();
         return;
     }  
@@ -139,4 +130,3 @@ function res(){
         desition(operator);
         return;
 }
-// 30/07/21
