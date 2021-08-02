@@ -3,6 +3,7 @@ let cuenta2=0;
 let operator="0";
 let tado=0;
 let redo=0;
+let forfac=1;
 
 
 function printValueToDisplay() {
@@ -33,7 +34,7 @@ function AC(){
     document.getElementById("display").innerHTML="0";
 }
 function addzero(){
-    if(cuenta != "0" && redo === 0){
+    if(cuenta !== "0" && redo === 0){
         cuenta += "0";
         printValueToDisplay();
         return;
@@ -129,6 +130,14 @@ function desition(opera){
             tado= cuenta2 % parseFloat(cuenta);
             document.getElementById("display").innerHTML=tado;
             break;
+            case "yrt":
+            if(cuenta === "0"){
+                document.getElementById("display").innerHTML='Math Error';
+                break;
+            }    
+            tado= Math.pow(cuenta2, 1 / parseFloat(cuenta)) ; 
+            document.getElementById("display").innerHTML=tado;
+            break;
         default:
         }
 }
@@ -157,21 +166,23 @@ function euler(){
 }
 function power2(){
     console.log(operator, redo !=1 , operator != "0");
-    if(redo !== 1 && operator === "0"){
+    if(redo !== 1){
     cuenta= Math.pow(parseFloat(cuenta),2);
     document.getElementById("display").innerHTML=cuenta;
     return;
     }
     cuenta= Math.pow(parseFloat(tado),2);
     document.getElementById("display").innerHTML=cuenta;
+    redo=0;
 }
 function power3(){
-    if(redo != 1 && operator === "0"){
+    if(redo != 1){
     console.log(cuenta, typeof cuenta, parseFloat(cuenta) );
     cuenta= Math.pow(parseFloat(cuenta),3);
     document.getElementById("display").innerHTML=cuenta;
     return;
     }
+    redo=0;
     cuenta= Math.pow(parseFloat(tado),3);
     document.getElementById("display").innerHTML=cuenta;
 }
@@ -191,7 +202,6 @@ function inverse(){
         cuenta= 1 / parseFloat(tado);
         document.getElementById("display").innerHTML=cuenta;
         console.log(cuenta);
-        redo=0;
         return;
     } 
     document.getElementById("display").innerHTML='Math Error';
@@ -226,4 +236,45 @@ function sqroot(){
         }
         document.getElementById("display").innerHTML="Math Error";
 }
+function cubicroot() {
+    if(cuenta > 0 && redo === 0){
+        cuenta= Math.cbrt(cuenta);
+        document.getElementById("display").innerHTML=cuenta;
+        return;
+        }
+        if(redo === 1 && tado > 0){
+            cuenta= Math.cbrt(tado) ;
+            document.getElementById("display").innerHTML=cuenta;
+            redo=0;
+            return;
+        }
+        document.getElementById("display").innerHTML="Math Error";  
+}
+function fac(){
+    if(redo === 1){
+        cuenta=tado;
+    }
+    cuenta=parseInt(cuenta);
+    console.log(cuenta);
+    if(cuenta < 0){
+        document.getElementById("display").innerHTML="Math Error";
+        redo = 1;
+        return;   
+    }
+    if(cuenta === 0){
+        cuenta=1;
+        document.getElementById("display").innerHTML=cuenta;
+        redo =1;
+        return;
+    }
 
+    for(i=1; i <= cuenta ;i++){
+        console.log(i);
+        forfac= forfac * i;
+    }
+    cuenta=forfac;
+
+    forfac=1;
+    redo=1;
+    return document.getElementById("display").innerHTML=cuenta;
+}
